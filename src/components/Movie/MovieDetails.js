@@ -4,9 +4,9 @@ import PropTypes from 'prop-types';
 import AddIcon from '../../static/images/add.svg';
 import PlayIcon from '../../static/images/play-button.svg';
 
-function MovieDetails({ movie }) {
+function MovieDetails({ movie, show }) {
   return (
-    <div className="modal__container">
+    <div className={`modal__container ${show && 'modal__scroll'}`}>
       <h1 className="modal__title">{movie.title || movie.name}</h1>
       <p className="modal__info">
         <span className="modal__rating">

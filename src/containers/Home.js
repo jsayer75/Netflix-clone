@@ -14,11 +14,13 @@ class Home extends Component {
 
   /* Get the appropriate details for a specific movie that was clicked */
   selectMovieHandler = async (movie) => {
+    document.body.style.overflow = 'hidden';
     this.setState({ toggleModal: true });
     await this.setState({ movieOverview: movie });
   };
 
   closeModal = () => {
+    document.body.style.overflow = 'auto';
     this.setState({ toggleModal: false });
   };
 
@@ -33,7 +35,10 @@ class Home extends Component {
           modalClosed={this.closeModal}
           movie={this.state.movieOverview}
         >
-          <MovieDetails movie={this.state.movieOverview} />
+          <MovieDetails
+            movie={this.state.movieOverview}
+            show={this.state.toggleModal}
+          />
         </Modal>
       </>
     );
