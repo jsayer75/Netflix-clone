@@ -58,12 +58,6 @@
       @include responsive(phone) {
         display: none;
       }
-
-      &:hover > .dropdownContent {
-        transition: all 0.4s;
-        opacity: 1;
-        visibility: visible;
-      }
     }
 
     &--downArrow {
@@ -170,13 +164,11 @@
   display: flex;
   flex-direction: column;
   //   align-items: center;
-  opacity: 0;
 
   color: #fff;
   transition-delay: 0.5s;
   padding-left: 1rem;
   padding-top: 1.8rem;
-  visibility: hidden;
   height: 19rem;
   border: 1px solid rgb(73, 73, 73);
   width: 15rem;
@@ -234,12 +226,6 @@
   height: 100%;
   justify-content: center;
   align-content: center;
-
-  &:hover .dropdownContent {
-    transition: all 0.4s;
-    opacity: 1;
-    visibility: visible;
-  }
 }
 
 .pseudo-link {
