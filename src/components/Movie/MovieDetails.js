@@ -14,8 +14,8 @@ function MovieDetails({ movie }) {
         </span>
         Release date: {movie.release_date || movie.first_air_date}{' '}
         {(movie.runtime || movie.episode_run_time) &&
-          `Runtime:{' '}
-        {movie.runtime || movie.episode_run_time}m`}
+          `Runtime: 
+        ${movie.runtime || movie.episode_run_time}m`}
       </p>
       <p className="modal__episode">
         {movie.number_of_episodes
