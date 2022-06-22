@@ -10,11 +10,28 @@ import App from './containers/App';
 import 'swiper/swiper-bundle.min.css';
 // Import main sass file to apply global styles
 import './static/sass/style.scss';
+const createStoreWithMiddleware = (function () {
+  let initialState = {};
 
-const createStoreWithMiddleware = applyMiddleware(promise)(createStore);
+  try {
+    initialState = localStorage.getItem('netflix')
+      ? JSON.parse(localStorage.getItem('netflix'))
+      : {};
+  } catch (error) {
+    console.log('getError', error);
+  }
+
+  const saver = (store) => (next) => (action) => {
+    let stateToSave = store.getState();
+    localStorage.setItem('netflix', JSON.stringify({ ...stateToSave }));
+    return next(action);
+  };
+
+  return createStore(reducers, initialState, applyMiddleware(promise, saver));
+})();
 
 const app = (
-  <Provider store={createStoreWithMiddleware(reducers)}>
+  <Provider store={createStoreWithMiddleware}>
     <App />
   </Provider>
 );
