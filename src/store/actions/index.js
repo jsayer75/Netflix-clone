@@ -10,6 +10,7 @@ export const FETCH_HORROR_MOVIES = 'FETCH_HORROR_MOVIES';
 export const FETCH_ROMANCE_MOVIES = 'FETCH_ROMANCE_MOVIES';
 export const FETCH_DOCUMENTARIES = 'FETCH_DOCUMENTARIES';
 export const ADD_TO_MY_LIST = 'ADD_TO_MY_LIST';
+export const REMOVE_FROM_MY_LIST = 'REMOVE_FROM_MY_LIST';
 
 export function fetchTrending() {
   const request = axios.get(
@@ -103,5 +104,12 @@ export function addToMyList(movie) {
   return {
     type: ADD_TO_MY_LIST,
     payload: movie,
+  };
+}
+
+export function removeFromMyList(movieId) {
+  return {
+    type: REMOVE_FROM_MY_LIST,
+    payload: movieId,
   };
 }

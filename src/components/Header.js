@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PropTypes from 'prop-types';
@@ -14,7 +14,12 @@ function Header({ movie, addToMyList, myMovieList }) {
     backgroundPosition: 'center',
   };
   const handleAddToMyList = () => {
-    if (!myMovieList.data?.find((mv) => mv.id === movie.id)) addToMyList(movie);
+    if (!myMovieList.data?.find((mv) => mv.id === movie.id)) {
+      addToMyList(movie);
+      alert('Successfully Added');
+    } else {
+      alert('Already exists in myList');
+    }
   };
 
   return (
