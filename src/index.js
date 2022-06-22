@@ -5,6 +5,7 @@ import { createStore, applyMiddleware } from 'redux';
 import reducers from './store/reducers';
 import promise from 'redux-promise';
 import '@babel/polyfill';
+import { composeWithDevTools } from 'redux-devtools-extension';
 
 import App from './containers/App';
 import 'swiper/swiper-bundle.min.css';
@@ -22,12 +23,16 @@ const createStoreWithMiddleware = (function () {
   }
 
   const saver = (store) => (next) => (action) => {
+    next(action);
     let stateToSave = store.getState();
     localStorage.setItem('netflix', JSON.stringify({ ...stateToSave }));
-    return next(action);
   };
 
-  return createStore(reducers, initialState, applyMiddleware(promise, saver));
+  return createStore(
+    reducers,
+    initialState,
+    composeWithDevTools(applyMiddleware(promise, saver))
+  );
 })();
 
 const app = (

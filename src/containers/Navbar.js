@@ -69,7 +69,9 @@ class Navbar extends Component {
   };
 
   onMyListClick = () => {
-    window.alert(JSON.stringify([]));
+    this.props.history.push({
+      pathname: '/mylist',
+    });
   };
 
   render() {

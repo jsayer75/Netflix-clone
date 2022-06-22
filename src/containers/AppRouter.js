@@ -5,6 +5,7 @@ import Home from './Home';
 import NotFound from './NotFound';
 import Search from './Search';
 import Navbar from './Navbar';
+import MyList from './MyList';
 
 const AppRouter = () => (
   <BrowserRouter>
@@ -13,6 +14,7 @@ const AppRouter = () => (
       <Switch>
         <Route path="/" exact component={Home} />
         <Route path="/search" component={Search} />
+        <Route path="/mylist" component={MyList} />
         <Route component={NotFound} />
       </Switch>
     </>

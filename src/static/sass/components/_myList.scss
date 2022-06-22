@@ -1,0 +1,13 @@
+.movie-list {
+  display: flex;
+  align-content: center;
+  color: #c5c5c5;
+  height: 100%;
+  font-size: 1.6rem;
+  padding: 10rem 6.5rem;
+}
+
+.movie-list table {
+  border-collapse: separate;
+  border-spacing: 10px 5px;
+}
