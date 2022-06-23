@@ -7,7 +7,6 @@ import { addToMyList, removeFromMyList } from '../../store/actions/index';
 import AddIcon from '../../static/images/add.svg';
 import RemoveIcon from '../../static/images/remove.svg';
 import PlayIcon from '../../static/images/play-button.svg';
-import { useMovieAddOrRemove } from '../../hooks/useMovieAddOrRemove';
 
 function MovieDetails({
   movie,
@@ -89,6 +88,10 @@ MovieDetails.propTypes = {
     number_of_seasons: PropTypes.number,
     overview: PropTypes.string,
   }),
+  show: PropTypes.bool.isRequired,
+  addToMyList: PropTypes.func.isRequired,
+  removeFromMyList: PropTypes.func.isRequired,
+  myMovieList: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {

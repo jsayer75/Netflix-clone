@@ -1,6 +1,6 @@
-/* global process */
 import React from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 function MyList({ myMovieList }) {
   return (
@@ -25,7 +25,11 @@ function MyList({ myMovieList }) {
   );
 }
 
-MyList.propTypes = {};
+MyList.propTypes = {
+  myMovieList: PropTypes.shape({
+    data: PropTypes.arrayOf(PropTypes.shape({})),
+  }),
+};
 
 const mapStateToProps = (state) => {
   return {

@@ -62,14 +62,16 @@ class MainContent extends Component {
   };
 
   componentDidMount = async () => {
-    await this.getMovie();
-    await this.props.fetchNetflixOriginals();
-    await this.props.fetchTrending();
-    await this.props.fetchTopRated();
-    await this.props.fetchActionMovies();
-    await this.props.fetchComedyMovies();
-    await this.props.fetchDocumentaries();
-    await this.props.fetchHorrorMovies();
+    await Promise.all([
+      this.getMovie(),
+      this.props.fetchNetflixOriginals(),
+      this.props.fetchTrending(),
+      this.props.fetchTopRated(),
+      this.props.fetchActionMovies(),
+      this.props.fetchComedyMovies(),
+      this.props.fetchDocumentaries(),
+      this.props.fetchHorrorMovies(),
+    ]);
 
     const newMoviesArray = this.state.movieInfo.map((movie) => {
       if (movie.title === 'Netflix Originals') {

@@ -70,6 +70,9 @@ Header.propTypes = {
     overview: PropTypes.string,
     backdrop_path: PropTypes.string,
   }).isRequired,
+  addToMyList: PropTypes.func.isRequired,
+  removeFromMyList: PropTypes.func.isRequired,
+  myMovieList: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => {
