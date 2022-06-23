@@ -10,8 +10,10 @@ export default function (state = {}, action) {
     case REMOVE_FROM_MY_LIST: {
       const movieId = action.payload;
       const index = state.data.findIndex((movie) => (movie.id = movieId));
-      const sliced = state.data.splice(index, 1);
-      return { ...state, data: [...sliced] };
+      return {
+        ...state,
+        data: [...state.data.slice(0, index), ...state.data.slice(index + 1)],
+      };
     }
     default:
       return state;

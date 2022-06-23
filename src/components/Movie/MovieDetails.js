@@ -7,6 +7,7 @@ import { addToMyList, removeFromMyList } from '../../store/actions/index';
 import AddIcon from '../../static/images/add.svg';
 import RemoveIcon from '../../static/images/remove.svg';
 import PlayIcon from '../../static/images/play-button.svg';
+import { useMovieAddOrRemove } from '../../hooks/useMovieAddOrRemove';
 
 function MovieDetails({
   movie,
@@ -17,30 +18,26 @@ function MovieDetails({
 }) {
   const [isListed, setIsListed] = useState(false);
   useEffect(() => {
-    console.log(
-      'mounted:',
-      myMovieList.data?.find((mv) => mv.id === movie.id)?.length
-    );
-    myMovieList.data?.find((mv) => mv.id === movie.id)?.length &&
+    if (myMovieList.data?.find((mv) => mv.id === movie.id)) {
       setIsListed(true);
-  }, []);
+    } else {
+      setIsListed(false);
+    }
+  }, [myMovieList, show]);
   const handleAddToMyList = () => {
     if (!isListed) {
       addToMyList(movie);
-      alert('Successfully Added');
-      setIsListed(true);
+      alert('Added A Movie to My List Successfully!');
     } else {
-      alert('Already exists in myList');
+      alert('The Movie Already Exists in My List');
     }
   };
 
   const handleRemoveToMyList = () => {
     removeFromMyList(movie.id);
-    alert('Successfully removed from list');
-    setIsListed(false);
+    alert('Removed the Movie from My List Successfully!');
   };
 
-  console.log({ isListed });
   return (
     <div className={`modal__container ${show && 'modal__scroll'}`}>
       <h1 className="modal__title">{movie.title || movie.name}</h1>
